@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>q
+        <style>
+            html, body {
+                font-family: Consolas, monospace;
+            }
+
+            .timetracker {
+                width: 90%;
+                margin: 0 auto;
+                background: #bbbbbb;
+                padding: 10px;
+                display: flex;
+                flex-direction: row;
+            }
+
+            .timetracker.active {
+                background: green;
+            }
+
+            .timetracker .time {
+                font-size: 3em;
+                width: 40%;
+                position: relative;
+            }
+
+            .timetracker textarea {
+                width: 60%;
+            }
+        </style>
+        <script>
+            (function($){
+
+
+                $(document).ready(function(){
+                    $('.time').click(function() {
+                        $('.timetracker').toggleClass('active');
+                        setInterval(function() {
+                            $('.time .test').html(parseInt($('.time .test').html()));
+
+                            var hour = parseInt($('.time .hour').html());
+                            var minute = parseInt($('.time .minute').html());
+                            var second = parseInt($('.time second').html());
+
+                            if(second === 60) {
+                                minute++;
+                                second = 0;
+                            }
+
+                            if (minute === 60) {
+                                hour++;
+                                minute = 0;
+                            }
+
+                            second++;
+                            console.log($('.time .hour').html());
+
+                            $('.time .hour').html(hour);
+                            $('.time .minute').html(minute);
+                            $('.time .second').html(second);
+
+                        }, 1000);
+                    })
+                });
+            })(jQuery);
+        </script>
+	</head>
+    <body>
+        <div class="timetracker">
+            <div class="time" id="time"><span class="test">0</span> - <span class="hour">0</span>:<span class="minute">00</span>:<span class="second">00</span></div>
+            <textarea>
+
+            </textarea>
+        </div>
+    </body>
+</html>
